@@ -34,6 +34,9 @@ if (isset($_SESSION['is_logged_in'])) {
 						Login
 					</button>	
 				</div>
+				<div>
+						<a href="register.php"> REGISTER </href>		
+				</div>
 			</form>
 	</body>
 </html>

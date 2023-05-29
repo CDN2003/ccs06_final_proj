@@ -7,12 +7,11 @@ try {
 		CREATE TABLE IF NOT EXISTS items (
 			id INT(11) AUTO_INCREMENT PRIMARY KEY,
 			item_name VARCHAR(50) NOT NULL,
-			category_id VARCHAR(20)
-            FOREIGN KEY (category_id) REFERENCES (category)
+			item_desc VARCHAR(500) NOT NULL
 		  );
 
 	";
-	$conn->exec($sql_users);
+	$conn->exec($sql_items);
 	echo "<li>Created users table";
 
 } catch (PDOException $e) {

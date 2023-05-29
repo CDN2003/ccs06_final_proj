@@ -125,7 +125,7 @@ class User
 		return null;
 	}
 
-	public static function register($first_name, $middle_name, $last_name, $email, $password, $birthdate, $gender, $address, $contact_number)
+	public static function register($first_name, $last_name, $email, $password, $address, $contact_number)
 	{
 		global $conn;
 
@@ -134,8 +134,8 @@ class User
 			$password = $class->hashPassword($password);
 
 			$sql = "
-				INSERT INTO users (first_name, middle_name, last_name, email, password, birthdate, gender, address, contact_number)
-				VALUES ('$first_name', '$middle_name', '$last_name', '$email', '$password', '$birthdate', '$gender', '$address', '$contact_number')
+				INSERT INTO users (first_name, last_name, email, password, address, contact_number)
+				VALUES ('$first_name', '$last_name', '$email', '$password', '$address', '$contact_number')
 			";
 			$conn->exec($sql);
 			return $conn->lastInsertId();
@@ -158,12 +158,9 @@ class User
 					INSERT INTO users
 					SET
 						first_name= \"{$user['first_name']}\",
-						middle_name= \"{$user['middle_name']}\",
 						last_name= \"{$user['last_name']}\",
 						email= \"{$user['email']}\",
 						password= \"{$password}\",
-						birthdate= \"{$user['birthdate']}\",
-						gender= \"{$user['gender']}\",
 						address= \"{$user['address']}\",
 						contact_number= \"{$user['contact_number']}\"
 				";

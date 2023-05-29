@@ -7,42 +7,72 @@
 </head>
 <body>
 <h1>Register a User</h1>
-		<form action="save-registration.php" method="POST">
-			<label for="first_name">First Name:</label>
-			<input type="text" id="first_name" name="first_name"><br>
 
-			<label for="middle_name">Middle Name:</label>
-			<input type="text" id="middle_name" name="middle_name"><br>
+<form action="save-registration.php" method="POST" onsubmit="return validateForm()">
+	<div>
+		<label>First Name</label>
+		<input type="text" name="first_name" id="first_name" placeholder="First Name" />	
+	</div>
+	<div>
+		<label>Last Name</label>
+		<input type="text" name="last_name" id="last_name" placeholder="Last Name" />	
+	</div>
+	<div>
+		<label>Email Address</label>
+		<input type="email" name="email" id="email" id="email" placeholder="email@address.com" />	
+	</div>
+	<div>
+		<label>Password</label>
+		<input type="password" name="password" id="password" placeholder="Password" />	
+	</div>
+	<div>
+		<label>Confirm Password</label>
+		<input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" />	
+	</div>
+	<div>
+		<label>Address</label>
+		<input type="text" name="address" id="address" placeholder="Address" />	
+	</div>
+	<div>
+		<label>Contact Number</label>
+		<input type="number" name="contact_number" id="contact_number" placeholder="Contact Number" />	
+	</div>
+	<div>
+		<button>
+			Register User
+		</button>	
+	</div>
+</form>
+<script>
+function validateForm() {
+    var firstName = document.getElementById("first_name").value;
+    var lastName = document.getElementById("last_name").value;
+    var Email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirm_password").value;
 
-			<label for="last_name">Last Name:</label>
-			<input type="text" id="last_name" name="last_name"><br>
+    if (firstName == "" || lastName == "") {
+        alert("First and last name are required.");
+        return false;
+    }
 
-			<label for="email">Email Address:</label>
-			<input type="email" id="email" name="email"><br>
+    if (Email == "" || password == "") {
+        alert("Email address and password are required.");
+        return false;
+    }
 
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="password" min="8"><br>
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters.");
+        return false;
+    }
 
-			<label for="confirm_password">Confirm Password:</label>
-			<input type="password" id="confirm_password" name="confirm_password" min="8"><br>
+    if (password != confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+    }
 
-			<label for="birthdate">Birthdate:</label>
-			<input type="date" id="birthdate" name="birthdate"><br>
-
-			<label for="gender">Gender:</label>
-			<select id="gender" name="gender">
-				<option value="male">Male</option>
-				<option value="female">Female</option>
-				<option value="other">Other</option>
-			</select><br>
-
-			<label for="address">Address:</label>
-			<input type="text" id="address" name="address"><br>
-
-			<label for="contact_number">Contact Number:</label>
-			<input type="tel" id="contact_number" name="contact_number"><br>
-
-			<input type="submit" value="Register">
-		</form>
+    return true;
+}
+</script>
 </body>
 </html>
